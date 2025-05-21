@@ -1,11 +1,9 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 import federation from "@originjs/vite-plugin-federation";
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: 
-  [
+  plugins: [
     react(),
     federation({
       name: "mfe3",
@@ -22,13 +20,14 @@ export default defineConfig({
       "Access-Control-Allow-Origin": "*",
     },
   },
-
+  preview: {
+    port: 5001, 
+  },
   build: {
     target: "esnext",
     minify: false,
     cssCodeSplit: false,
     outDir: "dist",
     assetsDir: "", // Isso evita que o remoteEntry.js vá para a pasta assets
-  },  
-})
-
+  },
+});
